@@ -12,33 +12,65 @@
 
 
 
-// Trouver le chiffre entre 1 et 10 avec 3 chance et annoncer les chances
-// Bonus si il dépasse 10 prevenir et ne pas enlever de chance
+// Trouver le chiffre (statique) entre 0 et 10 avec 3 chance et les annoncer
+// (Bonus) si il dépasse 10 prevenir et ne pas enlever de chance
 
-let joueur = prompt("Choisi un chiffre entre 1 et 10");
+let chiffre = Math.floor(Math.random() * 10);
+// console.log(chiffre); (Verification chiffre statique)
+let joueur = prompt("Choisi un chiffre entre 0 et 10");
 let chance = 2;
-let chiffre = 5;
 
 while(chance > 0){
     if(joueur != chiffre){
-        console.log("Retente ta chance il t'en reste: " + chance);
-        joueur = prompt("Reessaye, choisi un chiffre entre 1 et 10");
-    }else if(joueur == chiffre){
-        console.log("Gagnée !");
+        alert("Retente ta chance, il t'en reste: " + chance);
+        --chance;
+    }else{
+        alert("Gagnée !");
         break;
     }
-
-    --chance
     
-    if(chance == 0){
-        console.log("Perdu :(");
+    joueur = prompt("Choisi un chiffre entre 0 et 10");
+    
+    if(chance == 0 && joueur == chiffre){
+        alert("Gagnée!");
+    }else if(chance == 0 && joueur != chiffre){
+        alert("Le chiffre à trouver était " + chiffre + "\nPerdu :(");
     }
+    
 }
 
-// à 1 chance restante: Perdu s'affiche à la place de gagnée
+
+
+// De même, mais chiffre dynamique (aleatoire à chaque tour)
+
+// let chiffre = Math.floor(Math.random() * 10);
+// // console.log(chiffre); (Verification chiffre dynamique)
+// let joueur = prompt("Choisi un chiffre entre 0 et 10");
+// let chance = 2;
 
 
 
+// while(chance > 0){
+//     if(joueur != chiffre){
+//         alert("Retente ta chance, il t'en reste: " + chance);
+//         --chance;
+//         chiffre = Math.floor(Math.random() * 10);
+//         // console.log(chiffre); (Verification chiffre aléatoire)
+//     }else{
+//         alert("Gagnée! :)");
+//         break;
+//     }
+    
+//     joueur = prompt("Choisi un chiffre entre 0 et 10");
+
+//     if(chance == 0 && joueur == chiffre){
+//         alert("Gagnée! :)");
+//     }else if(chance == 0 && joueur != chiffre){
+//         alert("Le chiffre à trouver était " + chiffre + "\nPerdu :(");
+//     }
+
+    
+// }
 
 
 
