@@ -53,14 +53,16 @@ if(joueur == chiffre){
 
 
 // while(chance > 0){
-//     if(joueur != chiffre){
+//     if(joueur > 10 || joueur < 0){
+//         alert("Ce n'est pas entre 0 et 10 :/");
+//     }else if(joueur == chiffre){
+//         alert("Gagnée !");
+//         break;
+//     }else{
 //         alert("Retente ta chance, il t'en reste: " + chance);
 //         --chance;
 //         chiffre = Math.floor(Math.random() * 10);
-//         console.log(chiffre); //(Verification chiffre aléatoire)
-//     }else{
-//         alert("Gagnée! :)");
-//         break;
+//         console.log(chiffre); //(Verification chiffre dynamique)
 //     }
     
 //     joueur = prompt("Choisi un chiffre entre 0 et 10");
@@ -71,7 +73,6 @@ if(joueur == chiffre){
 //         alert("Le chiffre à trouver était " + chiffre + "\nPerdu :(");
 //     }
 
-    
 // }
 
 
