@@ -17,21 +17,21 @@ if(joueur == chiffre){
 // let chiffre = Math.floor(Math.random() * 10);
 // console.log(chiffre); //(Verification chiffre statique)
 // let joueur = prompt("Choisi un chiffre entre 0 et 10");
-// let chance = 2;
+// let chance = 3;
 
-// while(chance > -1){
+// while(chance > 0){
     
 //     if(chance > -1 && joueur > 10 || joueur < 0){
 //         alert("Ce n'est pas entre 0 et 10 :/");
 //     }else if(joueur == chiffre){
 //         alert("Gagnée!");
 //         break;
-//     }else if(chance == 0 && joueur != chiffre){
+//     }else if(chance == 1 && joueur != chiffre){
 //         alert("Perdu :( " + "\nLe chiffre à trouver était: " + chiffre);
 //         break;
 //     }else{
-//         alert("Retente ta chance, il t'en reste: " + chance);
 //         --chance;
+//         alert("Retente ta chance, il t'en reste: " + chance);
 //     }
 
 //     joueur = prompt("Choisi un chiffre entre 0 et 10");
