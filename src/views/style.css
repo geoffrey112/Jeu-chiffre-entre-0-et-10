@@ -1,0 +1,18 @@
+h1{
+    margin:50px 0px;
+}
+
+.square{
+    height:300px;
+    margin:50px 0px;
+    background-color:cyan;
+    border:2px solid black;
+    box-shadow: 7px 7px 15px 2px;
+}
+
+/*** Effect square ***/
+.square:hover{
+    box-shadow: 0px 0px 0px 0px black;
+    transition-duration: 2s;
+}
+
