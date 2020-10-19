@@ -1,120 +1,154 @@
 body{
-    background-image: url("https://wallpapercave.com/wp/wp2450670.png");
-    background-repeat: repeat-y;
-    background-size: cover;
-    background-position-x:-50px;
-    background-color:#262c3a;
+  background-image: url("https://wallpapercave.com/wp/wp2450670.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-position-x:-50px;
+  background-color:#262c3a;
 }
 
 .element-top{
-    margin:50px 0px;
+  margin:50px 0px;
 }
 
 .square{
-    height:400px;
-    margin:50px 100px;
-    background-image: url("/Rick et morty.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    border:2px solid #9fcc3b;
-    box-shadow: 2px 2px 20px 4px #74de58;
+  height:400px;
+  margin:50px 100px;
+  background-image: url("/Rick et morty.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border:2px solid #9fcc3b;
+  box-shadow: 2px 2px 20px 4px #74de58;
 }
 
 .arrow{
-    height:100px;
-    animation-iteration-count: infinite;
-    animation-duration: 3s;
-    animation-name: effect; 
-    transform: rotate(90deg) scale(1, 1);
-    margin-left:-100px;
+  height:100px;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-name: effect; 
+  transform: rotate(90deg) scale(1, 1);
+  margin-left:-100px;
+}
+
+h1{
+  color:#df3f17;
+  font-size:28px;
+  text-align:center;
+  font-weight: bold;
 }
 
 .content-label{
-    color:#145bf5;
-    font-size:20px;
-    text-align:center;
-    font-weight: bold;
+  color:#145bf5;
+  font-size:20px;
+  text-align:center;
+  font-weight: bold;
+  height:93%;
 }
 
 .select-easy{
-    transform: translate(42px);
+  transform: translate(42px);
 }
 
 .select-easy>option:nth-child(1){
-    background-color:#04f804;
+  background-color:#04f804;
 }
 
 .select-easy>option:nth-child(2){
-    background-color:#ff0000;
+  background-color:#ff0000;
+}
+
+.number{
+  width:70px;
+}
+
+.life-content{
+  width:250px;
+  height:80px;
+  margin: 50px 37%;
 }
 
 
 /* Effect square */
-    .square:hover{
-        box-shadow: 0px 0px 0px 0px #74de58;
-        transition-duration: 2s;
-    }
+.square:hover{
+  box-shadow: 0px 0px 0px 0px #74de58;
+  transition-duration: 2s;
+}
 /**/
 
 /* Effect arrow */
-    @keyframes effect{
+  @keyframes effect{
 
-        from{
-            transform: translate(0px, 0px) rotate(90deg) scale(1, 1);
-        }
-        50%{
-            transform: translate(0px, -25px) rotate(90deg) scale(1, 0);
-        }
-
-        50%{
-            transform: translate(0px, 20px) rotate(90deg) scale(1, -1);
-        }
-        to{
-            transform: translate(0px, 0px) rotate(90deg);
-        }
-
+    from{
+      transform: translate(0px, 0px) rotate(90deg) scale(1, 1);
     }
+    50%{
+      transform: translate(0px, -25px) rotate(90deg) scale(1, 0);
+    }
+
+    50%{
+      transform: translate(0px, 20px) rotate(90deg) scale(1, -1);
+    }
+    to{
+      transform: translate(0px, 0px) rotate(90deg);
+    }
+
+  }
 /**/
 
 /* Responsive small devices max*/
 @media (max-width: 767.98px){
-    .titleXl{
-        display:none;
-    }
+  .titleXl{
+    display:none;
+  }
 
-    .square{
-        margin:0 50px;
-    }
+  .square{
+    margin:0 50px;
+  }
 
-    .arrow{
-        width:80px;
-        height:80px;
-    }
+  .arrow{
+    width:80px;
+    height:80px;
+  }
+
+  h1{
+    font-size:23px;
+    margin-bottom:30px;
+  }
+
+  .life-content{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
 }
 /**/
 
 /* Responsive medium devices min */
-    @media (min-width: 768px){
-        .titleMd{
-            display: none;
-        }
+  @media (min-width: 768px){
+    .titleMd{
+      display: none;
     }
+
+    .life-content{
+      margin-left:52%;
+    }
+  }
 /**/
 
 /* Responsive medium devices max */
-    @media (max-width: 991.98px) {
-        .square{
-            background-position:-50px;
-        }
-
-        body{
-            background-size: 100%;
-            background-position-x: 100px;
-            background-position-y: -50px;
-            background-repeat: no-repeat;
-        }
+  @media (max-width: 991.98px) {
+    .square{
+      background-position:-50px;
     }
+
+    body{
+      background-size: 100%;
+      background-position-x: 100px;
+      background-position-y: -50px;
+      background-repeat: no-repeat;
+    }
+  }
 /**/
+
 
 
 
