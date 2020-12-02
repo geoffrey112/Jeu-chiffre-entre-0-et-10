@@ -6,5 +6,3 @@
 // If number of chance.. display life
 // Re-boot game with button
 
-
-

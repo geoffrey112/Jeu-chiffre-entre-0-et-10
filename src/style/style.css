@@ -15,7 +15,9 @@ body{
   margin:50px 100px;
   background-image: url("/Rick et morty.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:130%;
+  background-position-y:-30px;
+  background-position-x:-30px;
   border:2px solid #9fcc3b;
   box-shadow: 2px 2px 20px 4px #74de58;
 }
@@ -72,29 +74,44 @@ h1{
   box-shadow: 0px 0px 0px 0px #74de58;
   transition-duration: 2s;
 }
-/**/
 
 /* Effect arrow */
-  @keyframes effect{
+@keyframes effect{
 
-    from{
-      transform: translate(0px, 0px) rotate(90deg) scale(1, 1);
-    }
-    50%{
-      transform: translate(0px, -25px) rotate(90deg) scale(1, 0);
-    }
-
-    50%{
-      transform: translate(0px, 20px) rotate(90deg) scale(1, -1);
-    }
-    to{
-      transform: translate(0px, 0px) rotate(90deg);
-    }
-
+  from{
+    transform: translate(0px, 0px) rotate(90deg) scale(1, 1);
   }
-/**/
+  50%{
+    transform: translate(0px, -25px) rotate(90deg) scale(1, 0);
+  }
 
-/* Responsive small devices max*/
+  50%{
+    transform: translate(0px, 20px) rotate(90deg) scale(1, -1);
+  }
+  to{
+    transform: translate(0px, 0px) rotate(90deg);
+  }
+
+}
+
+/* Responsive XS max */
+@media (max-width: 575.98px){
+  .square{
+    background-size:720px;
+    background-position-x:-130px;
+  }
+}
+
+/* Responsive SM between min and max */
+@media (min-width: 576px) and (max-width: 767.98px){
+  .square{
+    background-size:158%;
+    background-position-y:-23px;
+    background-position-x:-120px;
+  }
+}
+
+/* Responsive SM max*/
 @media (max-width: 767.98px){
   .titleXl{
     display:none;
@@ -120,9 +137,8 @@ h1{
   }
 
 }
-/**/
 
-/* Responsive medium devices min */
+/* Responsive MD min */
   @media (min-width: 768px){
     .titleMd{
       display: none;
@@ -132,14 +148,18 @@ h1{
       margin-left:52%;
     }
   }
-/**/
 
-/* Responsive medium devices max */
+/* Responsive MD between min and max */
+@media (min-width: 768px) and (max-width: 991.98px){
+  .square{
+    background-position-y:-23px;
+    background-position-x:-40px;
+    background-size:133%; 
+  }
+}
+
+/* Responsive MD max */
   @media (max-width: 991.98px) {
-    .square{
-      background-position:-50px;
-    }
-
     body{
       background-size: 100%;
       background-position-x: 100px;
@@ -147,7 +167,6 @@ h1{
       background-repeat: no-repeat;
     }
   }
-/**/
 
 
 
