@@ -27,25 +27,26 @@
         <div class="content-label mt-4">
           <label for="difficulty">Choose the difficulty</label>
           <select class="select-easy" name="difficult" id="difficulty">
-            <option value="easy">Easy</option>
+            <option value="easy" selected>Easy</option>
             <option value="hard">Hard</option>
           </select>
           <label for="difficulty">Choose the number of chance</label>
-          <select class="mt-2" name="difficult" id="difficulty">
-            <option class="option" value="easy">1</option>
-            <option value="hard">2</option>
-            <option value="hard">3</option>
+          <select class="mt-2" name="difficult" id="selectChance">
+            <option value="1" selected>1</option>
+            <option value="2" id="chance2">2</option>
+            <option value="3" id="chance3">3</option>
           </select>
           <div>
             <input class="number" type="number" placeholder="0-10" required>
-            <input class="mt-4" value="Ok" type="button">
+            <input class="mt-4" value="Ok" id="test" type="button">
           </div>
+          <p id="answer"></p>
           <div>
             <input class="mt-4" type="reset">
           </div>
           <div class="row justify-content-around life-content">
-            <img src="/Rick's head.png" alt="life" width="60">
-            <img src="/Rick's head.png" alt="life" width="60">
+            <img src="/Rick's head.png" class="life1" id="life1" alt="life" width="60">
+            <img src="/Rick's head.png" class="life2" id="life2" alt="life" width="60">
             <img src="/Rick's head.png" alt="life" width="60">
           </div>
         </div>

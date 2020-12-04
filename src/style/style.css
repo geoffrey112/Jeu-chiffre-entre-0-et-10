@@ -74,6 +74,12 @@ h1{
   box-shadow: 0px 0px 0px 0px #74de58;
   transition-duration: 2s;
 }
+/*****/
+
+.life1, .life2{
+  visibility: hidden;
+}
+
 
 /* Effect arrow */
 @keyframes effect{
