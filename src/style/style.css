@@ -32,10 +32,11 @@ body{
 }
 
 h1{
-  color:#df3f17;
+  color:#134ae0;
   font-size:28px;
   text-align:center;
   font-weight: bold;
+  text-shadow:#74de58 0px 0px 10px;
 }
 
 .content-label{
@@ -46,15 +47,16 @@ h1{
   height:93%;
 }
 
-.select-easy{
+.selectDifficult{
   transform: translate(42px);
+  background-color: #04f804;
 }
 
-.select-easy>option:nth-child(1){
+.selectDifficult>option:nth-child(1){
   background-color:#04f804;
 }
 
-.select-easy>option:nth-child(2){
+.selectDifficult>option:nth-child(2){
   background-color:#ff0000;
 }
 

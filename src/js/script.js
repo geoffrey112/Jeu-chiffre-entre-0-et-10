@@ -9,16 +9,16 @@
 
 
 
+// Display number of life
+let selectChance = document.getElementById("selectChance");
 
-let select = document.getElementById("selectChance");
-
-select.addEventListener('change', function(){
-  select = document.getElementById("selectChance").value;
-
-  if(select == 2){
+selectChance.addEventListener('change', function(){
+  selectChance = document.getElementById("selectChance").value;
+  
+  if(selectChance == 2){
     document.getElementById("life2").style.visibility = "visible";
     document.getElementById("life1").style.visibility = "hidden";
-  }else if(select == 3){
+  }else if(selectChance == 3){
     document.getElementById("life2").style.visibility = "visible";
     document.getElementById("life1").style.visibility = "visible";
   }else{
@@ -29,5 +29,21 @@ select.addEventListener('change', function(){
 });
 
 
+
+// Easy game
+let selectDifficulty = document.getElementById("difficulty");
+selectDifficulty.addEventListener('change', function(){
+  selectDifficulty = document.getElementById("difficulty").value;
+
+  if(selectDifficulty == "easy"){
+    document.getElementById("difficulty").style.backgroundColor = "#04f804";
+    // let randomNb = Math.floor(Math.random()* 11);
+    
+  }else{
+    document.getElementById("difficulty").style.backgroundColor = "red";
+    // select red color
+  }
+
+});
 
 
