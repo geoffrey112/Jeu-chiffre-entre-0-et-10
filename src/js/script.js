@@ -30,20 +30,22 @@ selectChance.addEventListener('change', function(){
 
 
 
-// Easy game
+// Game
 let selectDifficulty = document.getElementById("difficulty");
 selectDifficulty.addEventListener('change', function(){
   selectDifficulty = document.getElementById("difficulty").value;
 
   if(selectDifficulty == "easy"){
     document.getElementById("difficulty").style.backgroundColor = "#04f804";
-    // let randomNb = Math.floor(Math.random()* 11);
     
   }else{
     document.getElementById("difficulty").style.backgroundColor = "red";
-    // select red color
   }
 
 });
 
 
+// submit = document.getElementById("submit");
+    // submit.addEventListener('click', function(nb){
+    //   nb = console.log("test");
+    // });

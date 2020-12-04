@@ -37,12 +37,12 @@
             <option value="3">3</option>
           </select>
           <div>
-            <input class="number" type="number" placeholder="0-10" required>
-            <input class="mt-4" value="Ok" id="test" type="button">
+            <input class="number mt-4" id="findNb" type="number" placeholder="0-10" required>
+            <button id="submit" class="mb-1 btn btn-dark submit" type="button" onclick="this.blur();">Ok</button>
           </div>
           <p id="answer"></p>
           <div>
-            <input class="mt-4" type="reset">
+            <button class="mt-4 btn btn-dark w-25" type="reset" onclick="this.blur();">Reset</button>
           </div>
           <div class="row justify-content-around life-content">
             <img src="/Rick's head.png" class="life1" id="life1" alt="life" width="60">
