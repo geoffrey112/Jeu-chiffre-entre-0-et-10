@@ -31,18 +31,18 @@
             <option value="hard">Hard</option>
           </select>
           <label for="difficulty">Choose the number of chance</label>
-          <select class="mt-2" name="difficult" id="selectChance">
+          <select id="selectChance" class="mt-2" name="difficult">
             <option value="1" selected>1</option>
             <option value="2">2</option>
             <option value="3">3</option>
           </select>
           <div>
             <input class="number mt-4" id="findNb" type="number" placeholder="0-10" required>
-            <button id="submit" class="mb-1 btn btn-dark submit" type="button" onclick="this.blur();">Ok</button>
+            <button id="ok" class="mb-1 btn btn-dark submit" type="button" onclick="this.blur();">Ok</button>
           </div>
-          <p id="answer"></p>
+            <p class="answer" id="answer"></p>
           <div>
-            <button class="mt-4 btn btn-dark w-25" type="reset" onclick="this.blur();">Reset</button>
+            <button class="btn btn-dark w-25" type="reset" onclick="this.blur();">Reset</button>
           </div>
           <div class="row justify-content-around life-content">
             <img src="/Rick's head.png" class="life1" id="life1" alt="life" width="60">

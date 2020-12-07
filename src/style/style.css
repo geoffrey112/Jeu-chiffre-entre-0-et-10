@@ -83,6 +83,11 @@ select, button{
   margin: 63px 37%;
 }
 
+.answer{
+  height:20px;
+  color:black;
+  text-shadow: 0px 0px 8px rgb(109, 0, 252);
+}
 
 /* Effect square */
 .square:hover{

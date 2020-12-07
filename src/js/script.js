@@ -9,6 +9,22 @@
 
 
 
+// Select: Display color
+let select = document.getElementById("difficulty");
+
+select.addEventListener('change', function(){
+  select = document.getElementById("difficulty").value;
+
+  if(select === "easy"){
+    document.getElementById("difficulty").style.backgroundColor = "#04f804";
+  }else{
+    document.getElementById("difficulty").style.backgroundColor = "red";
+  }
+
+});
+
+
+
 // Display number of life
 let selectChance = document.getElementById("selectChance");
 
@@ -25,27 +41,33 @@ selectChance.addEventListener('change', function(){
     document.getElementById("life2").style.visibility = "hidden";
     document.getElementById("life1").style.visibility = "hidden";
   }
-  
+
 });
 
 
 
-// Game
-let selectDifficulty = document.getElementById("difficulty");
-selectDifficulty.addEventListener('change', function(){
-  selectDifficulty = document.getElementById("difficulty").value;
+// Game (easy)
+let randomNb = Math.floor(Math.random()* 11);
+console.log(randomNb); //vérif
+let chance = document.getElementById("selectChance").value;
 
-  if(selectDifficulty == "easy"){
-    document.getElementById("difficulty").style.backgroundColor = "#04f804";
-    
-  }else{
-    document.getElementById("difficulty").style.backgroundColor = "red";
+submit = document.getElementById("ok");
+submit.addEventListener('click', function(nb){
+
+  nb = parseInt(document.getElementById("findNb").value);
+
+  while(chance > 0){
+    if(nb ===  randomNb){
+      document.getElementById("answer").innerHTML = "Gagnée!";
+      --chance;
+      console.log(chance); //vérif
+      break;
+    }else if(nb > randomNb || nb < randomNb){
+      document.getElementById("answer").innerHTML = "Perdu!";
+      --chance;
+      console.log(chance); //vérif
+      break;
+    }
   }
 
 });
-
-
-// submit = document.getElementById("submit");
-    // submit.addEventListener('click', function(nb){
-    //   nb = console.log("test");
-    // });
