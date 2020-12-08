@@ -9,18 +9,34 @@
 
 
 
+// Reset
+let reset = document.getElementById("reset");
+reset.addEventListener('click', function(){
+  
+  color = document.getElementById("difficulty").style.backgroundColor = "#04f804";
+  life = document.getElementById("life2").style.visibility = "hidden";
+  life = document.getElementById("life1").style.visibility = "hidden";
+  life = document.getElementById("life3").style.visibility = "visible";
+  gameAnswer = document.getElementById("answer").innerHTML = "";
+  nbOfChance = 1;
+  
+  console.log(nbOfChance);
+});
+
+
+
 // Select: Display color
 let select = document.getElementById("difficulty");
 
 select.addEventListener('change', function(){
   select = document.getElementById("difficulty").value;
-
+  
   if(select === "easy"){
     document.getElementById("difficulty").style.backgroundColor = "#04f804";
   }else{
     document.getElementById("difficulty").style.backgroundColor = "red";
   }
-
+  
 });
 
 
@@ -41,31 +57,29 @@ selectChance.addEventListener('change', function(){
     document.getElementById("life2").style.visibility = "hidden";
     document.getElementById("life1").style.visibility = "hidden";
   }
-
+  
 });
 
 
 
-// Game (easy)
+// Game easy with 1 life
 let randomNb = Math.floor(Math.random()* 11);
-console.log(randomNb); //vérif
-let chance = document.getElementById("selectChance").value;
+let nbOfChance = document.getElementById("selectChance").value;
+let submit = document.getElementById("ok");
 
-submit = document.getElementById("ok");
-submit.addEventListener('click', function(nb){
+submit.addEventListener('click', function(){
 
   nb = parseInt(document.getElementById("findNb").value);
 
-  while(chance > 0){
+  while(nbOfChance > 0){
     if(nb ===  randomNb){
       document.getElementById("answer").innerHTML = "Gagnée!";
-      --chance;
-      console.log(chance); //vérif
+      --nbOfChance;
       break;
     }else if(nb > randomNb || nb < randomNb){
       document.getElementById("answer").innerHTML = "Perdu!";
-      --chance;
-      console.log(chance); //vérif
+      document.getElementById("life3").style.visibility = "hidden";
+      --nbOfChance;
       break;
     }
   }
