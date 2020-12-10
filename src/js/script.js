@@ -9,22 +9,6 @@
 
 
 
-// Reset
-let reset = document.getElementById("reset");
-reset.addEventListener('click', function(){
-  
-  color = document.getElementById("difficulty").style.backgroundColor = "#04f804";
-  life = document.getElementById("life2").style.visibility = "hidden";
-  life = document.getElementById("life1").style.visibility = "hidden";
-  life = document.getElementById("life3").style.visibility = "visible";
-  gameAnswer = document.getElementById("answer").innerHTML = "";
-  nbOfChance = 1;
-  
-  console.log(nbOfChance);
-});
-
-
-
 // Select: Display color
 let select = document.getElementById("difficulty");
 
@@ -45,17 +29,21 @@ select.addEventListener('change', function(){
 let selectChance = document.getElementById("selectChance");
 
 selectChance.addEventListener('change', function(){
-  selectChance = document.getElementById("selectChance").value;
+  
+  selectChance = parseInt(document.getElementById("selectChance").value);
   
   if(selectChance == 2){
     document.getElementById("life2").style.visibility = "visible";
     document.getElementById("life1").style.visibility = "hidden";
+    nbOfChance = 2;
   }else if(selectChance == 3){
     document.getElementById("life2").style.visibility = "visible";
     document.getElementById("life1").style.visibility = "visible";
+    nbOfChance = 3;
   }else{
     document.getElementById("life2").style.visibility = "hidden";
     document.getElementById("life1").style.visibility = "hidden";
+    nbOfChance = 1;
   }
   
 });
@@ -64,24 +52,55 @@ selectChance.addEventListener('change', function(){
 
 // Game easy with 1 life
 let randomNb = Math.floor(Math.random()* 11);
-let nbOfChance = document.getElementById("selectChance").value;
+let nbOfChance = parseInt(document.getElementById("selectChance").value);
+console.log(`Chiffre à trouver: ${randomNb}`); //Vérif chiffre à trouver
 let submit = document.getElementById("ok");
 
+
 submit.addEventListener('click', function(){
-
-  nb = parseInt(document.getElementById("findNb").value);
-
+  
+  let nb = parseInt(document.getElementById("findNb").value);
+  
+  
   while(nbOfChance > 0){
     if(nb ===  randomNb){
       document.getElementById("answer").innerHTML = "Gagnée!";
-      --nbOfChance;
+      nbOfChance = 0;
+      console.log(nbOfChance);
       break;
-    }else if(nb > randomNb || nb < randomNb){
-      document.getElementById("answer").innerHTML = "Perdu!";
-      document.getElementById("life3").style.visibility = "hidden";
+    }else if(nb !== randomNb && nbOfChance == 2){
+      document.getElementById("answer").innerHTML = "Ouch, try again..";
+      document.getElementById("life2").style.visibility = "hidden";
       --nbOfChance;
+      console.log(nbOfChance);
+      break;
+    }else{
+      document.getElementById("life3").style.visibility = "hidden";
+      document.getElementById("answer").innerHTML = "Perdu!";
+      --nbOfChance;
+      console.log(nbOfChance);
       break;
     }
+    
   }
-
+  
+  
 });
+
+
+
+// Reset
+let reset = document.getElementById("reset");
+reset.addEventListener('click', function(){
+  
+  color = document.getElementById("difficulty").style.backgroundColor = "#04f804";
+  life = document.getElementById("life2").style.visibility = "hidden";
+  life = document.getElementById("life1").style.visibility = "hidden";
+  life = document.getElementById("life3").style.visibility = "visible";
+  gameAnswer = document.getElementById("answer").innerHTML = "";
+  nbOfChance = 1;
+  randomNb = Math.floor(Math.random()* 11);
+  
+  console.log(`Random après reset: ${randomNb}`);
+});
+
