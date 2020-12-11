@@ -3,8 +3,6 @@
 
 //If number are inside, enabled "Ok" button 
 
-// Re-boot game with button
-
 // Between 0-10 only and no charac
 
 
@@ -35,14 +33,17 @@ selectChance.addEventListener('change', function(){
   if(selectChance == 2){
     document.getElementById("life2").style.visibility = "visible";
     document.getElementById("life1").style.visibility = "hidden";
+    document.getElementById("answer").innerHTML = "";
     nbOfChance = 2;
   }else if(selectChance == 3){
     document.getElementById("life2").style.visibility = "visible";
     document.getElementById("life1").style.visibility = "visible";
+    document.getElementById("answer").innerHTML = "";
     nbOfChance = 3;
   }else{
     document.getElementById("life2").style.visibility = "hidden";
     document.getElementById("life1").style.visibility = "hidden";
+    document.getElementById("answer").innerHTML = "";
     nbOfChance = 1;
   }
   
@@ -50,7 +51,7 @@ selectChance.addEventListener('change', function(){
 
 
 
-// Game easy with 1 life
+// Game easy with 1-2 life
 let randomNb = Math.floor(Math.random()* 11);
 let nbOfChance = parseInt(document.getElementById("selectChance").value);
 console.log(`Chiffre à trouver: ${randomNb}`); //Vérif chiffre à trouver
@@ -66,24 +67,29 @@ submit.addEventListener('click', function(){
     if(nb ===  randomNb){
       document.getElementById("answer").innerHTML = "Gagnée!";
       nbOfChance = 0;
-      console.log(nbOfChance);
+      console.log(nbOfChance); // Check chance
+      break;
+    }else if(nb != randomNb && nbOfChance == 3){
+      document.getElementById("life1").style.visibility = "hidden";
+      document.getElementById("answer").innerHTML = "Ouch, try again, 2 chance remaining";
+      --nbOfChance;
+      console.log(nbOfChance); // Check chance
       break;
     }else if(nb !== randomNb && nbOfChance == 2){
-      document.getElementById("answer").innerHTML = "Ouch, try again..";
+      document.getElementById("answer").innerHTML = "Ouch, try again.. Last chance";
       document.getElementById("life2").style.visibility = "hidden";
       --nbOfChance;
-      console.log(nbOfChance);
+      console.log(nbOfChance); // Check chance
       break;
     }else{
       document.getElementById("life3").style.visibility = "hidden";
       document.getElementById("answer").innerHTML = "Perdu!";
       --nbOfChance;
-      console.log(nbOfChance);
+      console.log(nbOfChance); // Check chance
       break;
     }
     
   }
-  
   
 });
 
@@ -101,6 +107,6 @@ reset.addEventListener('click', function(){
   nbOfChance = 1;
   randomNb = Math.floor(Math.random()* 11);
   
-  console.log(`Random après reset: ${randomNb}`);
+  console.log(`Random après reset: ${randomNb}`); // Check chance after reset
 });
 
