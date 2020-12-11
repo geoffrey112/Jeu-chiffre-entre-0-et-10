@@ -1,5 +1,3 @@
-//If number are inside, enabled "Ok" button 
-
 // Between 0-10 only and no charac
 
 
@@ -50,8 +48,8 @@ selectChance.addEventListener('change', function(){
 
 let randomNb = Math.floor(Math.random()* 11);
 let nbOfChance = parseInt(document.getElementById("selectChance").value);
-console.log(`Chiffre à trouver easy/hard: ${randomNb}`); //Vérif chiffre à trouver
 let submit = document.getElementById("ok");
+console.log(`Chiffre à trouver easy/hard: ${randomNb}`); //Vérif chiffre à trouver
 
 submit.addEventListener('click', function(){
   
@@ -69,18 +67,13 @@ submit.addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Ouch, try again, 2 chance remaining";
         document.getElementById("difficulty").disabled = true;
         document.getElementById("selectChance").disabled = true;
-        // Disabled select
-
         --nbOfChance;
         break;
       }else if(nb !== randomNb && nbOfChance === 2){
         document.getElementById("answer").innerHTML = "Ouch, try again.. Last chance";
         document.getElementById("life2").style.visibility = "hidden";
-
-        selectChance.disabled = "true";
-        difficult.disabled = "true";
-        // Disabled select
-
+        document.getElementById("difficulty").disabled = true;
+        document.getElementById("selectChance").disabled = true;
         --nbOfChance;
         break;
       }else{
@@ -101,6 +94,8 @@ submit.addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Ouch, try again, 2 chance remaining";
         randomNb = Math.floor(Math.random()* 11);
         console.log("Change random nb: " + randomNb); //Check change
+        document.getElementById("difficulty").disabled = true;
+        document.getElementById("selectChance").disabled = true;
         --nbOfChance;
         break;
       }else if(nb !== randomNb && nbOfChance === 2){
@@ -108,6 +103,8 @@ submit.addEventListener('click', function(){
         document.getElementById("life2").style.visibility = "hidden";
         randomNb = Math.floor(Math.random()* 11);
         console.log("Change random nb: " + randomNb); //Check change
+        document.getElementById("difficulty").disabled = true;
+        document.getElementById("selectChance").disabled = true;
         --nbOfChance;
         break;
       }else{
