@@ -162,6 +162,7 @@ reset.addEventListener('click', function(){
   document.getElementById("answer").innerHTML = "";
   document.getElementById("difficulty").disabled = false;
   document.getElementById("selectChance").disabled = false;
+  document.getElementById("ok").disabled = true;
   nbOfChance = 1;
   randomNb = Math.floor(Math.random()* 11);
   
