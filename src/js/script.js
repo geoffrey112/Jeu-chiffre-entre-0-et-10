@@ -46,6 +46,7 @@ selectChance.addEventListener('change', function(){
 
 
 
+// Game
 let randomNb = Math.floor(Math.random()* 11);
 let nbOfChance = parseInt(document.getElementById("selectChance").value);
 let submit = document.getElementById("ok");
@@ -54,7 +55,7 @@ console.log(`Chiffre à trouver easy/hard: ${randomNb}`); //Vérif chiffre à tr
 submit.addEventListener('click', function(){
   
   let nb = parseInt(document.getElementById("findNb").value);
-  difficult = document.getElementById("difficulty").value;
+  let difficult = document.getElementById("difficulty").value;
 
   if(difficult == "easy"){ // Easy
     while(nbOfChance > 0){
@@ -117,6 +118,35 @@ submit.addEventListener('click', function(){
   }
 
 });
+
+
+
+// Enabled Ok
+let nb = document.getElementById("findNb");
+
+nb.addEventListener('input', function(){
+
+  nb = document.getElementById("findNb").value;
+
+  if(nb > 10 || nb < 0){
+    document.getElementById("ok").disabled = true;
+  }else if(nb == "" || nb == "-" || nb == "e"){
+    document.getElementById("ok").disabled = true;
+  }else{
+    document.getElementById("ok").disabled = false;
+  }
+
+});
+
+
+
+// Enter Ok
+nb.addEventListener('keydown', function(){
+  
+});
+
+
+
 
 
 
