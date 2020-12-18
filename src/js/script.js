@@ -47,7 +47,6 @@ let randomNb = Math.floor(Math.random()* 11);
 let nbOfChance = parseInt(document.getElementById("selectChance").value);
 let submit = document.getElementById("ok");
 let enter = document.getElementById("findNb");
-// console.log(`Find number easy/hard: ${randomNb}`); //Check randomNb
 
 submit.addEventListener('click', function(){
   
@@ -91,7 +90,6 @@ submit.addEventListener('click', function(){
         document.getElementById("life1").style.visibility = "hidden";
         document.getElementById("answer").innerHTML = "Ouch, try again, 2 chance remaining";
         randomNb = Math.floor(Math.random()* 11);
-        // console.log("Change random nb: " + randomNb); //Check change
         document.getElementById("difficulty").disabled = true;
         document.getElementById("selectChance").disabled = true;
         --nbOfChance;
@@ -100,7 +98,6 @@ submit.addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Ouch, try again.. Last chance";
         document.getElementById("life2").style.visibility = "hidden";
         randomNb = Math.floor(Math.random()* 11);
-        // console.log("Change random nb: " + randomNb); //Check change
         document.getElementById("difficulty").disabled = true;
         document.getElementById("selectChance").disabled = true;
         --nbOfChance;
@@ -152,6 +149,4 @@ reset.addEventListener('click', function(){
   document.getElementById("ok").disabled = true;
   nbOfChance = 1;
   randomNb = Math.floor(Math.random()* 11);
-  // console.log(`Random after reset: ${randomNb}`); // Check chance after reset
-
 });
