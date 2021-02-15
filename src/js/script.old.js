@@ -155,5 +155,3 @@ enter.addEventListener('keydown', function(e){
     submit.click();
   }
 });
-
-
