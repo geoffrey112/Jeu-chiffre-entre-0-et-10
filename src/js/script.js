@@ -1,47 +1,47 @@
 
 class Display{
-  constructor(difficulty){
-    this._difficulty = difficulty;
+  constructor(select){
+    this._select = select;
   }
 
-  get difficulty(){  
-    
-    if(this._difficulty === "easy"){
-      // document.getElementById("difficulty").style.backgroundColor = "#04f804";
-      console.log('test ok');
-    }else{
-      // document.getElementById("difficulty").style.backgroundColor = "red";
-      console.log('test non');
-    }
+  get select(){
+    return this._select;
   }
+
+  set select(value){  
+
+    if(value === 'easy'){
+      document.getElementById("difficulty").style.backgroundColor = "#04f804";
+    }else{
+      document.getElementById("difficulty").style.backgroundColor = "red";
+    }
+    this._select = value;
+
+  }
+
 
 }
 
-let displayColor = new Display(document.getElementById('difficulty').value);
-
-// Add changement listener ici
-
-console.log(displayColor.difficulty);
-
+let displayColor = new Display();
+document.getElementById('difficulty').addEventListener('change', function(){
+  displayColor.select = document.getElementById('difficulty').value;
+});
 
 
 
 
 
 
-// Difficult: Display color
-// let difficult = document.getElementById("difficulty");
 
-// difficult.addEventListener('change', function(){
-//   difficult = document.getElementById("difficulty").value;
-  
-//   if(difficult === "easy"){
-//     document.getElementById("difficulty").style.backgroundColor = "#04f804";
-//   }else{
-//     document.getElementById("difficulty").style.backgroundColor = "red";
-//   }
-  
-// });
+
+
+
+
+
+
+
+
+
 
 
 
