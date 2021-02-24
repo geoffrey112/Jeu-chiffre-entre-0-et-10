@@ -1,75 +1,119 @@
-
+// Display Nb of life - Color - Ok button
 class Display{
-  constructor(select){
-    this._select = select;
+  constructor(difficulty, life, enableOk){
+    this._difficulty = difficulty;
+    this._life = life;
+    this._enableOk = enableOk;
   }
 
-  get select(){
-    return this._select;
+  get difficulty(){
+    return this._difficulty;
   }
 
-  set select(value){  
+  set difficulty(value){  
 
     if(value === 'easy'){
       document.getElementById("difficulty").style.backgroundColor = "#04f804";
     }else{
       document.getElementById("difficulty").style.backgroundColor = "red";
     }
-    this._select = value;
-
+    this._difficulty = value;
   }
 
+
+  get life(){
+    return this._life;
+  }
+
+  set life(value){
+    if(value == 2){
+      document.getElementById("life2").style.visibility = "visible";
+      document.getElementById("life1").style.visibility = "hidden";
+      document.getElementById("answer").innerHTML = "";
+      value = 2;
+    }else if(value == 3){
+      document.getElementById("life2").style.visibility = "visible";
+      document.getElementById("life1").style.visibility = "visible";
+      document.getElementById("answer").innerHTML = "";
+      value = 3;
+    }else{
+      document.getElementById("life2").style.visibility = "hidden";
+      document.getElementById("life1").style.visibility = "hidden";
+      document.getElementById("answer").innerHTML = "";
+      value = 1;
+    }
+    this._life = value;
+  }
+
+
+  get enableOk(){
+    return this._enableOk;
+  }
+
+  set enableOk(value){
+    if(value > 10 || value < 0){
+      document.getElementById("ok").disabled = true;
+    }else if(value == "" || value == "-" || value == "e"){
+      document.getElementById("ok").disabled = true;
+    }else{
+      document.getElementById("ok").disabled = false;
+    }
+    this._enableOk = value;
+  }
 
 }
 
-let displayColor = new Display();
-document.getElementById('difficulty').addEventListener('change', function(){
-  displayColor.select = document.getElementById('difficulty').value;
+
+let displayElement = new Display('easy', 1);
+
+// Color
+document.getElementById('difficulty').addEventListener('change', () => {
+  displayElement.difficulty = document.getElementById('difficulty').value;
+});
+
+// Nb of life
+document.getElementById('selectChance').addEventListener('change', () => {
+  displayElement.life = document.getElementById('selectChance').value;
+});
+
+// Ok button
+document.getElementById('findNb').addEventListener('input', () => {
+  displayElement.enableOk = document.getElementById('findNb').value;
 });
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Display number of life
-let selectChance = document.getElementById("selectChance");
-
-selectChance.addEventListener('change', function(){
-  
-  selectChance = parseInt(document.getElementById("selectChance").value);
-  
-  if(selectChance == 2){
-    document.getElementById("life2").style.visibility = "visible";
-    document.getElementById("life1").style.visibility = "hidden";
-    document.getElementById("answer").innerHTML = "";
-    nbOfChance = 2;
-  }else if(selectChance == 3){
-    document.getElementById("life2").style.visibility = "visible";
-    document.getElementById("life1").style.visibility = "visible";
-    document.getElementById("answer").innerHTML = "";
-    nbOfChance = 3;
-  }else{
-    document.getElementById("life2").style.visibility = "hidden";
-    document.getElementById("life1").style.visibility = "hidden";
-    document.getElementById("answer").innerHTML = "";
-    nbOfChance = 1;
+// Process
+class Process{
+  constructor(enterButton){
+    this._enterButton = enterButton;
   }
-  
+
+  set enterButton(value){
+    if(value === "Enter"){
+      document.getElementById('ok').click();
+    }
+  }
+
+}
+
+let enabledButton = new Process();
+
+// Enable enter
+document.getElementById('findNb').addEventListener('keydown', function(e){
+  enabledButton.enterButton = e.key;
 });
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -159,27 +203,3 @@ reset.addEventListener('click', function(){
 
 
 
-// Enabled Ok
-let enter = document.getElementById("findNb");
-
-enter.addEventListener('input', function(){
-
-  enter = document.getElementById("findNb").value;
-
-  if(enter > 10 || enter < 0){
-    document.getElementById("ok").disabled = true;
-  }else if(enter == "" || enter == "-" || enter == "e"){
-    document.getElementById("ok").disabled = true;
-  }else{
-    document.getElementById("ok").disabled = false;
-  }
-});
-
-
-
-// Enable Enter button
-enter.addEventListener('keydown', function(e){
-  if(e.key === "Enter"){
-    submit.click();
-  }
-});
