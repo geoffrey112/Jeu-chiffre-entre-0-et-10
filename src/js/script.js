@@ -90,6 +90,10 @@ class Process{
     this._enterButton = enterButton;
   }
 
+  get enterButton(){
+    return this._enterButton;
+  }
+
   set enterButton(value){
     if(value === "Enter"){
       document.getElementById('ok').click();
@@ -105,15 +109,32 @@ document.getElementById('findNb').addEventListener('keydown', function(e){
   enabledButton.enterButton = e.key;
 });
 
+// Reset
 
 
 
 
 
 
+// Reset
+let reset = document.getElementById("reset");
 
-
-
+reset.addEventListener('click', function(){
+  
+  document.getElementById("difficulty").style.backgroundColor = "#04f804";
+  document.getElementById("difficulty").value = "easy";
+  document.getElementById("life2").style.visibility = "hidden";
+  document.getElementById("life1").style.visibility = "hidden";
+  document.getElementById("life3").style.visibility = "visible";
+  document.getElementById("answer").innerHTML = "";
+  document.getElementById("difficulty").disabled = false;
+  document.getElementById("selectChance").disabled = false;
+  document.getElementById("selectChance").value = 1;
+  document.getElementById("ok").disabled = true;
+  document.getElementById("findNb").value = "";
+  nbOfChance = 1;
+  randomNb = Math.floor(Math.random()* 11);
+});
 
 
 
@@ -181,25 +202,7 @@ submit.addEventListener('click', function(){
 
 
 
-// Reset
-let reset = document.getElementById("reset");
 
-reset.addEventListener('click', function(){
-  
-  document.getElementById("difficulty").style.backgroundColor = "#04f804";
-  document.getElementById("difficulty").value = "easy";
-  document.getElementById("life2").style.visibility = "hidden";
-  document.getElementById("life1").style.visibility = "hidden";
-  document.getElementById("life3").style.visibility = "visible";
-  document.getElementById("answer").innerHTML = "";
-  document.getElementById("difficulty").disabled = false;
-  document.getElementById("selectChance").disabled = false;
-  document.getElementById("selectChance").value = 1;
-  document.getElementById("ok").disabled = true;
-  document.getElementById("findNb").value = "";
-  nbOfChance = 1;
-  randomNb = Math.floor(Math.random()* 11);
-});
 
 
 
