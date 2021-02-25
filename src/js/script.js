@@ -11,7 +11,6 @@ class Display{
   }
 
   set difficulty(value){  
-
     if(value === 'easy'){
       document.getElementById("difficulty").style.backgroundColor = "#04f804";
     }else{
@@ -19,7 +18,6 @@ class Display{
     }
     this._difficulty = value;
   }
-
 
   get life(){
     return this._life;
@@ -30,21 +28,17 @@ class Display{
       document.getElementById("life2").style.visibility = "visible";
       document.getElementById("life1").style.visibility = "hidden";
       document.getElementById("answer").innerHTML = "";
-      value = 2;
     }else if(value == 3){
       document.getElementById("life2").style.visibility = "visible";
       document.getElementById("life1").style.visibility = "visible";
       document.getElementById("answer").innerHTML = "";
-      value = 3;
     }else{
       document.getElementById("life2").style.visibility = "hidden";
       document.getElementById("life1").style.visibility = "hidden";
       document.getElementById("answer").innerHTML = "";
-      value = 1;
     }
     this._life = value;
   }
-
 
   get enableOk(){
     return this._enableOk;
@@ -84,8 +78,8 @@ document.getElementById('findNb').addEventListener('input', () => {
 
 
 
-// Process
-class Process{
+// Enable enter button
+class Enable{
   constructor(enterButton){
     this._enterButton = enterButton;
   }
@@ -99,42 +93,77 @@ class Process{
       document.getElementById('ok').click();
     }
   }
+}
+
+let enableEnter = new Enable();
+
+document.getElementById('findNb').addEventListener('keydown', (e) => {
+  enableEnter.enterButton = e.key;
+});
+
+
+
+
+// Game
+class Game extends Display{
+  constructor(difficulty, life, randomNb, reset){
+    super(difficulty, life);
+    this._randomNb = randomNb;
+    this._reset = reset;
+  }
+
+  get randomNb(){
+    return this._randomNb;
+  }
+
+  set randomNb(value){
+    this._randomNb = value;
+  }
+
+  get reset(){
+    return this._reset;
+  }
+
+  set reset(value){
+    if(value){
+      document.getElementById("difficulty").style.backgroundColor = "#04f804";
+      document.getElementById("difficulty").value = "easy";
+      document.getElementById("life2").style.visibility = "hidden";
+      document.getElementById("life1").style.visibility = "hidden";
+      document.getElementById("life3").style.visibility = "visible";
+      document.getElementById("answer").innerHTML = "";
+      document.getElementById("difficulty").disabled = false;
+      document.getElementById("selectChance").disabled = false;
+      document.getElementById("selectChance").value = 1;
+      document.getElementById("ok").disabled = true;
+      document.getElementById("findNb").value = "";
+      // nbOfChance = 1;
+      // randomNb = Math.floor(Math.random()* 11);
+      console.log("Après reset: " + randomNb);
+    }
+  }
 
 }
 
-let enabledButton = new Process();
-
-// Enable enter
-document.getElementById('findNb').addEventListener('keydown', function(e){
-  enabledButton.enterButton = e.key;
-});
+let game = new Game();
+game.randomNb = Math.floor(Math.random()* 11);
+console.log("Random " + game.randomNb);
+// Remettre life à 1 après reset + check randomNb
 
 // Reset
-
-
-
-
-
-
-// Reset
-let reset = document.getElementById("reset");
-
-reset.addEventListener('click', function(){
-  
-  document.getElementById("difficulty").style.backgroundColor = "#04f804";
-  document.getElementById("difficulty").value = "easy";
-  document.getElementById("life2").style.visibility = "hidden";
-  document.getElementById("life1").style.visibility = "hidden";
-  document.getElementById("life3").style.visibility = "visible";
-  document.getElementById("answer").innerHTML = "";
-  document.getElementById("difficulty").disabled = false;
-  document.getElementById("selectChance").disabled = false;
-  document.getElementById("selectChance").value = 1;
-  document.getElementById("ok").disabled = true;
-  document.getElementById("findNb").value = "";
-  nbOfChance = 1;
-  randomNb = Math.floor(Math.random()* 11);
+document.getElementById('reset').addEventListener('click', () => {
+  game.reset = document.getElementById('reset');
 });
+
+
+
+
+
+
+
+
+
+
 
 
 
