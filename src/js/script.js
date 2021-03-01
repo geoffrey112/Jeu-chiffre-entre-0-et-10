@@ -54,25 +54,7 @@ class Display{
     }
     this._enableOk = value;
   }
-
 }
-
-
-let displayElement = new Display('easy', 1);
-
-// Color
-document.getElementById('difficulty').addEventListener('change', () => {
-  displayElement.difficulty = document.getElementById('difficulty').value;
-});
-// Nb of life
-document.getElementById('selectChance').addEventListener('change', () => {
-  displayElement.nbOfLife = document.getElementById('selectChance').value;
-});
-// Ok button
-document.getElementById('findNb').addEventListener('input', () => {
-  displayElement.enableOk = document.getElementById('findNb').value;
-});
-
 
 
 // Game
@@ -97,9 +79,12 @@ class Game extends Display{
   }
 
   set functionality(value){
-    if(value === this._randomNb && this._difficulty === 'easy'){
-      console.log("Test random OK");
-      // Prend la valeur hard aussi
+    if(this._difficulty === 'easy'){
+      if(this._nbOfLife > 0){
+        console.log("Life " + this._nbOfLife); 
+      }else{
+        console.log("Not life");
+      }
     }
     
   }
@@ -122,27 +107,11 @@ class Game extends Display{
       document.getElementById("ok").disabled = true;
       document.getElementById("findNb").value = "";
       this._randomNb = Math.floor(Math.random()*11);
-      // Remettre nbOfLife à 1 après reset
+      this._nbOfLife = 1;
       console.log("Après reset: " + this._randomNb);
     }
   }
-
 }
-
-let game = new Game('easy');
-game.randomNb = Math.floor(Math.random()*11);
-console.log("Random " + game.randomNb);
-
-// game process
-document.getElementById('ok').addEventListener('click', () => {
-  game.functionality = parseInt(document.getElementById('findNb').value);
-});
-
-// Reset
-document.getElementById('reset').addEventListener('click', () => {
-  game.reset = document.getElementById('reset');
-});
-
 
 
 
@@ -162,6 +131,38 @@ class Enable{
     }
   }
 }
+
+let displayElement = new Display('easy', 1);
+
+// Color
+document.getElementById('difficulty').addEventListener('change', () => {
+  displayElement.difficulty = document.getElementById('difficulty').value;
+  game.difficulty = document.getElementById('difficulty').value;
+});
+// Nb of life
+document.getElementById('selectChance').addEventListener('change', () => {
+  displayElement.nbOfLife = document.getElementById('selectChance').value;
+  game.nbOfLife = document.getElementById('selectChance').value;
+});
+// Ok button
+document.getElementById('findNb').addEventListener('input', () => {
+  displayElement.enableOk = document.getElementById('findNb').value;
+});
+
+
+let game = new Game('easy', 1);
+game.randomNb = Math.floor(Math.random()*11);
+console.log("Random " + game.randomNb);
+
+// game process
+document.getElementById('ok').addEventListener('click', () => {
+  game.functionality = parseInt(document.getElementById('findNb').value);
+});
+// Reset
+document.getElementById('reset').addEventListener('click', () => {
+  game.reset = document.getElementById('reset');
+});
+
 
 let enableEnter = new Enable();
 
