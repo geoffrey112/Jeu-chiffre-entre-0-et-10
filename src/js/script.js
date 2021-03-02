@@ -81,9 +81,33 @@ class Game extends Display{
   set functionality(value){
     if(this._difficulty === 'easy'){
       if(this._nbOfLife > 0){
-        console.log("Life " + this._nbOfLife); 
-      }else{
-        console.log("Not life");
+        if(value === this._randomNb){
+          document.getElementById("answer").innerHTML = "Gagnée!";
+          document.getElementById('selectChance').disabled = true;
+          document.getElementById('difficulty').disabled = true;
+          this._nbOfLife = 0;
+        }else if(value != this._randomNb && this._nbOfLife === 3){
+          // Test Ok
+          document.getElementById("life1").style.visibility = "hidden";
+          document.getElementById("answer").innerHTML = "Ouch, try again, 2 chance remaining";
+          document.getElementById("difficulty").disabled = true;
+          document.getElementById("selectChance").disabled = true;
+          --this._nbOfLife;
+          console.log(this._nbOfLife); // Check
+        }else if(value !== this._randomNb && this._nbOfLife === 2){
+          document.getElementById("answer").innerHTML = "Ouch, try again.. Last chance";
+          document.getElementById("life2").style.visibility = "hidden";
+          document.getElementById("difficulty").disabled = true;
+          document.getElementById("selectChance").disabled = true;
+          --this._nbOfLife;
+          console.log(this._nbOfLife); // Check
+        }else{
+          document.getElementById("life3").style.visibility = "hidden";
+          document.getElementById("answer").innerHTML = "Perdu!";
+          document.getElementById('difficulty').disabled = true;
+          document.getElementById('selectChance').disabled = true;
+          --this._nbOfLife;
+        }
       }
     }
     
@@ -142,7 +166,7 @@ document.getElementById('difficulty').addEventListener('change', () => {
 // Nb of life
 document.getElementById('selectChance').addEventListener('change', () => {
   displayElement.nbOfLife = document.getElementById('selectChance').value;
-  game.nbOfLife = document.getElementById('selectChance').value;
+  game.nbOfLife = parseInt(document.getElementById('selectChance').value);
 });
 // Ok button
 document.getElementById('findNb').addEventListener('input', () => {
