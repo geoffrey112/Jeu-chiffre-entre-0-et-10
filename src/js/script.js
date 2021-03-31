@@ -12,9 +12,9 @@ class Display{
 
   set difficulty(value){  
     if(value === 'easy'){
-      document.getElementById("difficulty").style.backgroundColor = "#04f804";
+      document.getElementById('difficulty').style.backgroundColor = "#04f804";
     }else{
-      document.getElementById("difficulty").style.backgroundColor = "red";
+      document.getElementById('difficulty').style.backgroundColor = "red";  
     }
     this._difficulty = value;
   }
@@ -25,17 +25,17 @@ class Display{
 
   set nbOfLife(value){
     if(value == 2){
-      document.getElementById("life2").style.visibility = "visible";
-      document.getElementById("life1").style.visibility = "hidden";
-      document.getElementById("answer").innerHTML = "";
+      document.getElementById('life2').style.visibility = "visible";
+      document.getElementById('life1').style.visibility = "hidden";
+      document.getElementById('answer').innerHTML = "";
     }else if(value == 3){
-      document.getElementById("life2").style.visibility = "visible";
-      document.getElementById("life1").style.visibility = "visible";
-      document.getElementById("answer").innerHTML = "";
+      document.getElementById('life2').style.visibility = "visible";
+      document.getElementById('life1').style.visibility = "visible";
+      document.getElementById('answer').innerHTML = "";
     }else{
-      document.getElementById("life2").style.visibility = "hidden";
-      document.getElementById("life1").style.visibility = "hidden";
-      document.getElementById("answer").innerHTML = "";
+      document.getElementById('life2').style.visibility = "hidden";
+      document.getElementById('life1').style.visibility = "hidden";
+      document.getElementById('answer').innerHTML = "";
     }
     this._nbOfLife = value;
   }
@@ -46,11 +46,11 @@ class Display{
 
   set enableOk(value){
     if(value > 10 || value < 0){
-      document.getElementById("ok").disabled = true;
+      document.getElementById('ok').disabled = true;
     }else if(value == "" || value == "-" || value == "e"){
-      document.getElementById("ok").disabled = true;
+      document.getElementById('ok').disabled = true;
     }else{
-      document.getElementById("ok").disabled = false;
+      document.getElementById('ok').disabled = false;
     }
     this._enableOk = value;
   }
@@ -75,32 +75,37 @@ class Game extends Display{
   }
 
   get functionality(){
-    return this._functionality;
+    return this.functionality();
   }
 
-  set functionality(value){
+
+  functionality(value){
     if(this._difficulty === 'easy'){
       if(this._nbOfLife > 0){
         if(value === this._randomNb){
-          document.getElementById("answer").innerHTML = "Gagnée!";
+          // Class Display
+          document.getElementById('answer').innerHTML = "Gagnée!";
           document.getElementById('selectChance').disabled = true;
           document.getElementById('difficulty').disabled = true;
           this._nbOfLife = 0;
         }else if(value != this._randomNb && this._nbOfLife === 3){
-          document.getElementById("life1").style.visibility = "hidden";
-          document.getElementById("answer").innerHTML = "Ouch, try again, 2 chance remaining";
-          document.getElementById("difficulty").disabled = true;
-          document.getElementById("selectChance").disabled = true;
+          // Class Display
+          document.getElementById('life1').style.visibility = "hidden";
+          document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
+          document.getElementById('difficulty').disabled = true;
+          document.getElementById('selectChance').disabled = true;
           --this._nbOfLife;
         }else if(value !== this._randomNb && this._nbOfLife === 2){
-          document.getElementById("answer").innerHTML = "Ouch, try again.. Last chance";
-          document.getElementById("life2").style.visibility = "hidden";
-          document.getElementById("difficulty").disabled = true;
-          document.getElementById("selectChance").disabled = true;
+          // Class Display
+          document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
+          document.getElementById('life2').style.visibility = "hidden";
+          document.getElementById('difficulty').disabled = true;
+          document.getElementById('selectChance').disabled = true;
           --this._nbOfLife;
         }else{
-          document.getElementById("life3").style.visibility = "hidden";
-          document.getElementById("answer").innerHTML = "Perdu!";
+          // Class Display
+          document.getElementById('life3').style.visibility = "hidden";
+          document.getElementById('answer').innerHTML = "Perdu!";
           document.getElementById('difficulty').disabled = true;
           document.getElementById('selectChance').disabled = true;
           --this._nbOfLife;
@@ -109,27 +114,31 @@ class Game extends Display{
     }else{
       if(this._nbOfLife > 0){
         if(value === this._randomNb){
-          document.getElementById("answer").innerHTML = "Gagnée!";
+          // Class Display
+          document.getElementById('answer').innerHTML = "Gagnée!";
           document.getElementById('selectChance').disabled = true;
           document.getElementById('difficulty').disabled = true;
           this._nbOfLife = 0;
         }else if(value != this._randomNb && this._nbOfLife === 3){
-          document.getElementById("life1").style.visibility = "hidden";
-          document.getElementById("answer").innerHTML = "Ouch, try again, 2 chance remaining";
-          document.getElementById("difficulty").disabled = true;
-          document.getElementById("selectChance").disabled = true;
+          // Class Display
+          document.getElementById('life1').style.visibility = "hidden";
+          document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
+          document.getElementById('difficulty').disabled = true;
+          document.getElementById('selectChance').disabled = true;
           this._randomNb = Math.floor(Math.random()* 11);
           --this._nbOfLife;
         }else if(value != this.randomNb && this._nbOfLife === 2){
-          document.getElementById("answer").innerHTML = "Ouch, try again.. Last chance";
-          document.getElementById("life2").style.visibility = "hidden";
-          document.getElementById("difficulty").disabled = true;
-          document.getElementById("selectChance").disabled = true;
+          // Class Display
+          document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
+          document.getElementById('life2').style.visibility = "hidden";
+          document.getElementById('difficulty').disabled = true;
+          document.getElementById('selectChance').disabled = true;
           this._randomNb = Math.floor(Math.random()* 11);
           --this._nbOfLife;
         }else{
-          document.getElementById("life3").style.visibility = "hidden";
-          document.getElementById("answer").innerHTML = "Perdu!";
+          // Class Display
+          document.getElementById('life3').style.visibility = "hidden";
+          document.getElementById('answer').innerHTML = "Perdu!";
           --this._nbOfLife;
         }
       }
@@ -142,23 +151,22 @@ class Game extends Display{
 
   set reset(value){
     if(value){
-      document.getElementById("difficulty").style.backgroundColor = "#04f804";
-      document.getElementById("difficulty").value = "easy";
-      document.getElementById("life2").style.visibility = "hidden";
-      document.getElementById("life1").style.visibility = "hidden";
-      document.getElementById("life3").style.visibility = "visible";
-      document.getElementById("answer").innerHTML = "";
-      document.getElementById("difficulty").disabled = false;
-      document.getElementById("selectChance").disabled = false;
-      document.getElementById("selectChance").value = 1;
-      document.getElementById("ok").disabled = true;
-      document.getElementById("findNb").value = "";
+      document.getElementById('difficulty').style.backgroundColor = "#04f804";
+      document.getElementById('difficulty').value = "easy";
+      document.getElementById('life2').style.visibility = "hidden";
+      document.getElementById('life1').style.visibility = "hidden";
+      document.getElementById('life3').style.visibility = "visible";
+      document.getElementById('answer').innerHTML = "";
+      document.getElementById('difficulty').disabled = false;
+      document.getElementById('selectChance').disabled = false;
+      document.getElementById('selectChance').value = 1;
+      document.getElementById('ok').disabled = true;
+      document.getElementById('findNb').value = "";
       this._randomNb = Math.floor(Math.random()*11);
       this._nbOfLife = 1;
     }
   }
 }
-
 
 
 // Enable enter button
@@ -177,6 +185,8 @@ class Enable{
     }
   }
 }
+
+
 
 let displayElement = new Display('easy', 1);
 
@@ -201,7 +211,7 @@ game.randomNb = Math.floor(Math.random()*11);
 
 // game process
 document.getElementById('ok').addEventListener('click', () => {
-  game.functionality = parseInt(document.getElementById('findNb').value);
+  game.functionality(parseInt(document.getElementById('findNb').value));
 });
 // Reset
 document.getElementById('reset').addEventListener('click', () => {
