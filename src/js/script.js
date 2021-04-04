@@ -1,16 +1,17 @@
-// Display Nb of life - Color - Ok button
+// Display Nb of life - Color - Ok button - enable txt, disabled select
 class Display{
-  constructor(difficulty, nbOfLife, enableOk){
+  constructor(difficulty, nbOfLife, enableOk, enableDisable){
     this._difficulty = difficulty;
     this._nbOfLife = nbOfLife;
     this._enableOk = enableOk;
+    this._enableDisable = enableDisable;
   }
 
   get difficulty(){
     return this._difficulty;
   }
 
-  set difficulty(value){  
+  set difficulty(value){
     if(value === 'easy'){
       document.getElementById('difficulty').style.backgroundColor = "#04f804";
     }else{
@@ -54,6 +55,59 @@ class Display{
     }
     this._enableOk = value;
   }
+
+  get enableDisable(){
+    return this.enableDisable();
+  }
+
+  enableDisable(value){
+    // Check pour randomNb
+    if(this._difficulty === 'easy'){
+      if(this._nbOfLife > 0){
+        if(value === this._randomNb){
+          document.getElementById('answer').innerHTML = "Win!";
+          document.getElementById('selectChance').disabled = true;
+          document.getElementById('difficulty').disabled = true;
+        }else if(value != this._randomNb && this._nbOfLife === 3){
+          document.getElementById('life1').style.visibility = "hidden";
+          document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
+          document.getElementById('difficulty').disabled = true;
+          document.getElementById('selectChance').disabled = true;
+        }else if(value !== this._randomNb && this._nbOfLife === 2){
+          document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
+          document.getElementById('life2').style.visibility = "hidden";
+          document.getElementById('difficulty').disabled = true;
+          document.getElementById('selectChance').disabled = true;
+        }else{
+          document.getElementById('life3').style.visibility = "hidden";
+          document.getElementById('answer').innerHTML = "Game over!";
+          document.getElementById('difficulty').disabled = true;
+          document.getElementById('selectChance').disabled = true;
+        }
+      }
+    }/*else{
+      if(this._nbOfLife > 0){
+        if(value === this._randomNb){
+          document.getElementById('answer').innerHTML = "Win!";
+          document.getElementById('selectChance').disabled = true;
+          document.getElementById('difficulty').disabled = true;
+        }else if(value != this._randomNb && this._nbOfLife === 3){
+          document.getElementById('life1').style.visibility = "hidden";
+          document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
+          document.getElementById('difficulty').disabled = true;
+          document.getElementById('selectChance').disabled = true;
+        }else if(value != this.randomNb && this._nbOfLife === 2){
+          document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
+          document.getElementById('life2').style.visibility = "hidden";
+          document.getElementById('difficulty').disabled = true;
+          document.getElementById('selectChance').disabled = true;
+        }else{
+          document.getElementById('life3').style.visibility = "hidden";
+          document.getElementById('answer').innerHTML = "Game over!";
+        }
+      }
+    }*/
+  }
 }
 
 
@@ -78,68 +132,39 @@ class Game extends Display{
     return this.functionality();
   }
 
-
   functionality(value){
     if(this._difficulty === 'easy'){
       if(this._nbOfLife > 0){
         if(value === this._randomNb){
-          // Class Display
-          document.getElementById('answer').innerHTML = "Gagnée!";
-          document.getElementById('selectChance').disabled = true;
-          document.getElementById('difficulty').disabled = true;
           this._nbOfLife = 0;
+          console.log("Win !"); // Check
         }else if(value != this._randomNb && this._nbOfLife === 3){
-          // Class Display
-          document.getElementById('life1').style.visibility = "hidden";
-          document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
-          document.getElementById('difficulty').disabled = true;
-          document.getElementById('selectChance').disabled = true;
           --this._nbOfLife;
+          console.log(`Ouch, try again, ${this._nbOfLife} chance remaining`); // Check
         }else if(value !== this._randomNb && this._nbOfLife === 2){
-          // Class Display
-          document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
-          document.getElementById('life2').style.visibility = "hidden";
-          document.getElementById('difficulty').disabled = true;
-          document.getElementById('selectChance').disabled = true;
           --this._nbOfLife;
+          console.log(`Ouch, try again.. ${this._nbOfLife} chance`); // Check
         }else{
-          // Class Display
-          document.getElementById('life3').style.visibility = "hidden";
-          document.getElementById('answer').innerHTML = "Perdu!";
-          document.getElementById('difficulty').disabled = true;
-          document.getElementById('selectChance').disabled = true;
           --this._nbOfLife;
+          console.log(`Game over ${this._nbOfLife} chance`); // Check
         }
       }
     }else{
       if(this._nbOfLife > 0){
         if(value === this._randomNb){
-          // Class Display
-          document.getElementById('answer').innerHTML = "Gagnée!";
-          document.getElementById('selectChance').disabled = true;
-          document.getElementById('difficulty').disabled = true;
           this._nbOfLife = 0;
+          console.log("Gagné"); // Check
         }else if(value != this._randomNb && this._nbOfLife === 3){
-          // Class Display
-          document.getElementById('life1').style.visibility = "hidden";
-          document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
-          document.getElementById('difficulty').disabled = true;
-          document.getElementById('selectChance').disabled = true;
           this._randomNb = Math.floor(Math.random()* 11);
           --this._nbOfLife;
+          console.log(`Ouch, try again, 2 chance remaining ${this._randomNb}`); // Check
         }else if(value != this.randomNb && this._nbOfLife === 2){
-          // Class Display
-          document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
-          document.getElementById('life2').style.visibility = "hidden";
-          document.getElementById('difficulty').disabled = true;
-          document.getElementById('selectChance').disabled = true;
           this._randomNb = Math.floor(Math.random()* 11);
           --this._nbOfLife;
+          console.log(`Ouch, try again.. Last chance ${this._randomNb}`); // Check
         }else{
-          // Class Display
-          document.getElementById('life3').style.visibility = "hidden";
-          document.getElementById('answer').innerHTML = "Perdu!";
           --this._nbOfLife;
+          console.log(`Perdu ${this._randomNb}`); // Check
         }
       }
     }
@@ -164,6 +189,7 @@ class Game extends Display{
       document.getElementById('findNb').value = "";
       this._randomNb = Math.floor(Math.random()*11);
       this._nbOfLife = 1;
+      console.log(`Après reset ${this._randomNb}`); // Check log
     }
   }
 }
@@ -187,7 +213,6 @@ class Enable{
 }
 
 
-
 let displayElement = new Display('easy', 1);
 
 // Color
@@ -208,10 +233,12 @@ document.getElementById('findNb').addEventListener('input', () => {
 
 let game = new Game('easy', 1);
 game.randomNb = Math.floor(Math.random()*11);
+console.log(game.randomNb); // Check
 
 // game process
 document.getElementById('ok').addEventListener('click', () => {
   game.functionality(parseInt(document.getElementById('findNb').value));
+  displayElement.enableDisable(document.getElementById('findNb').value);
 });
 // Reset
 document.getElementById('reset').addEventListener('click', () => {
