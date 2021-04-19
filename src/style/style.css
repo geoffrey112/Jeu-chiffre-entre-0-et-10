@@ -77,6 +77,11 @@ select, button{
   width:70px;
 }
 
+.number:focus-within{
+  outline:solid #6d00fc;
+  transition-duration: 0.2s;
+}
+
 .life-content{
   width:260px;
   height:90px;
@@ -86,8 +91,9 @@ select, button{
 .answer{
   height:20px;
   color:black;
-  text-shadow: 0px 0px 8px rgb(109, 0, 252);
+  text-shadow: 0px 0px 8px #6d00fc;
 }
+
 
 /* Effect square */
 .square:hover{
