@@ -20,15 +20,12 @@ class Display{
     if(value == 2){
       document.getElementById('life2').style.visibility = "visible";
       document.getElementById('life1').style.visibility = "hidden";
-      document.getElementById('answer').innerHTML = "";
     }else if(value == 3){
       document.getElementById('life2').style.visibility = "visible";
       document.getElementById('life1').style.visibility = "visible";
-      document.getElementById('answer').innerHTML = "";
     }else{
       document.getElementById('life2').style.visibility = "hidden";
       document.getElementById('life1').style.visibility = "hidden";
-      document.getElementById('answer').innerHTML = "";
     }
     this._nbOfLife = value;
   }
@@ -44,53 +41,54 @@ class Display{
     this._enableOk = value;
   }
 
-  set drawInGame(value){
-    if(this._difficulty === 'easy'){
-      if(this._nbOfLife > 0){
-        if(value === this._randomNb){
-          document.getElementById('answer').innerHTML = "Win!";
-          document.getElementById('selectChance').disabled = true;
-          document.getElementById('difficulty').disabled = true;
-        }else if(value != this._randomNb && this._nbOfLife === 3){
-          document.getElementById('life1').style.visibility = "hidden";
-          document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
-          document.getElementById('difficulty').disabled = true;
-          document.getElementById('selectChance').disabled = true;
-        }else if(value !== this._randomNb && this._nbOfLife === 2){
-          document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
-          document.getElementById('life2').style.visibility = "hidden";
-          document.getElementById('difficulty').disabled = true;
-          document.getElementById('selectChance').disabled = true;
-        }else{
-          document.getElementById('life3').style.visibility = "hidden";
-          document.getElementById('answer').innerHTML = "Game over!";
-          document.getElementById('difficulty').disabled = true;
-          document.getElementById('selectChance').disabled = true;
-        }
-      }
-    }else{
-      if(this._nbOfLife > 0){
-        if(value === this._randomNb){
-          document.getElementById('answer').innerHTML = "Win!";
-          document.getElementById('selectChance').disabled = true;
-          document.getElementById('difficulty').disabled = true;
-        }else if(value != this._randomNb && this._nbOfLife === 3){
-          document.getElementById('life1').style.visibility = "hidden";
-          document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
-          document.getElementById('difficulty').disabled = true;
-          document.getElementById('selectChance').disabled = true;
-        }else if(value != this.randomNb && this._nbOfLife === 2){
-          document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
-          document.getElementById('life2').style.visibility = "hidden";
-          document.getElementById('difficulty').disabled = true;
-          document.getElementById('selectChance').disabled = true;
-        }else{
-          document.getElementById('life3').style.visibility = "hidden";
-          document.getElementById('answer').innerHTML = "Game over!";
-        }
-      }
-    }
-  }
+
+  // set drawInGame(value){ // Check ici pour drawInGame (Gui)
+  //   if(this._difficulty === 'easy'){
+  //     if(this._nbOfLife > 0){
+  //       if(value === this._randomNb){
+  //         document.getElementById('answer').innerHTML = "Win!";
+  //         document.getElementById('selectChance').disabled = true;
+  //         document.getElementById('difficulty').disabled = true;
+  //       }else if(value != this._randomNb && this._nbOfLife === 3){
+  //         document.getElementById('life1').style.visibility = "hidden";
+  //         document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
+  //         document.getElementById('difficulty').disabled = true;
+  //         document.getElementById('selectChance').disabled = true;
+  //       }else if(value !== this._randomNb && this._nbOfLife === 2){
+  //         document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
+  //         document.getElementById('life2').style.visibility = "hidden";
+  //         document.getElementById('difficulty').disabled = true;
+  //         document.getElementById('selectChance').disabled = true;
+  //       }else{
+  //         document.getElementById('life3').style.visibility = "hidden";
+  //         document.getElementById('answer').innerHTML = "Game over!";
+  //         document.getElementById('difficulty').disabled = true;
+  //         document.getElementById('selectChance').disabled = true;
+  //       }
+  //     }
+  //   }else{
+  //     if(this._nbOfLife > 0){
+  //       if(value === this._randomNb){
+  //         document.getElementById('answer').innerHTML = "Win!";
+  //         document.getElementById('selectChance').disabled = true;
+  //         document.getElementById('difficulty').disabled = true;
+  //       }else if(value != this._randomNb && this._nbOfLife === 3){
+  //         document.getElementById('life1').style.visibility = "hidden";
+  //         document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
+  //         document.getElementById('difficulty').disabled = true;
+  //         document.getElementById('selectChance').disabled = true;
+  //       }else if(value != this.randomNb && this._nbOfLife === 2){
+  //         document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
+  //         document.getElementById('life2').style.visibility = "hidden";
+  //         document.getElementById('difficulty').disabled = true;
+  //         document.getElementById('selectChance').disabled = true;
+  //       }else{
+  //         document.getElementById('life3').style.visibility = "hidden";
+  //         document.getElementById('answer').innerHTML = "Game over!";
+  //       }
+  //     }
+  //   }
+  // }
 
 }
 
@@ -111,21 +109,23 @@ class Game extends Display{
     this._randomNb = value;
   }
 
-  functionality(value){
+  functionality(value){ 
     if(this._difficulty === 'easy'){
       if(this._nbOfLife > 0){
+        // Selection 2-3, 1 vie seulement (check typeof nbOfLife)
+        console.log(`Nb de vie dans condition: ${this._nbOfLife}`);
         if(value === this._randomNb){
           this._nbOfLife = 0;
-          console.log("Win !"); // Check
+          console.log(`Win ! Nb de vie après: ${this._nbOfLife}`); // Check
         }else if(value != this._randomNb && this._nbOfLife === 3){
           --this._nbOfLife;
-          console.log(`Ouch, try again, ${this._nbOfLife} chance remaining`); // Check
+          console.log(`Ouch, try again Nb de vie après: ${this._nbOfLife}`); // Check
         }else if(value !== this._randomNb && this._nbOfLife === 2){
           --this._nbOfLife;
-          console.log(`Ouch, try again.. ${this._nbOfLife} chance`); // Check
+          console.log(`Ouch, try again.. Nb de vie après: ${this._nbOfLife}`); // Check
         }else{
           --this._nbOfLife;
-          console.log(`Game over ${this._nbOfLife} chance`); // Check
+          console.log(`Game over Nb de vie après: ${this._nbOfLife}`); // Check
         }
       }
     }else{
@@ -148,6 +148,8 @@ class Game extends Display{
       }
     }
   }
+
+  // set drawInGame(value)
 
   set reset(value){
     if(value){
