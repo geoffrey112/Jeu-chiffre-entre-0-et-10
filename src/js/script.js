@@ -1,10 +1,9 @@
 // Display Color - Nb of life - Ok button - Enable text, Disabled select
 class Display{
-  constructor(difficulty, nbOfLife, enableOk, drawInGame){
+  constructor(difficulty, nbOfLife, enableOk){
     this._difficulty = difficulty;
     this._nbOfLife = nbOfLife;
     this._enableOk = enableOk;
-    this._drawInGame = drawInGame;
   }
 
   set difficulty(value){
@@ -42,7 +41,7 @@ class Display{
   }
 
 
-  // set drawInGame(value){ // Check ici pour drawInGame (Gui)
+  // set drawInGame(value){
   //   if(this._difficulty === 'easy'){
   //     if(this._nbOfLife > 0){
   //       if(value === this._randomNb){
@@ -95,8 +94,8 @@ class Display{
 
 // Game process
 class Game extends Display{
-  constructor(difficulty, nbOfLife, drawInGame, randomNb, reset){
-    super(difficulty, nbOfLife, drawInGame);
+  constructor(difficulty, nbOfLife, randomNb, reset){
+    super(difficulty, nbOfLife);
     this._randomNb = randomNb;
     this._reset = reset;
   }
@@ -112,12 +111,11 @@ class Game extends Display{
   functionality(value){ 
     if(this._difficulty === 'easy'){
       if(this._nbOfLife > 0){
-        // Selection 2-3, 1 vie seulement (check typeof nbOfLife)
-        console.log(`Nb de vie dans condition: ${this._nbOfLife}`);
+        console.log(`Nb de vie avant: ${this._nbOfLife}`); // Check
         if(value === this._randomNb){
           this._nbOfLife = 0;
           console.log(`Win ! Nb de vie après: ${this._nbOfLife}`); // Check
-        }else if(value != this._randomNb && this._nbOfLife === 3){
+        }else if(value !== this._randomNb && this._nbOfLife === 3){
           --this._nbOfLife;
           console.log(`Ouch, try again Nb de vie après: ${this._nbOfLife}`); // Check
         }else if(value !== this._randomNb && this._nbOfLife === 2){
@@ -133,14 +131,14 @@ class Game extends Display{
         if(value === this._randomNb){
           this._nbOfLife = 0;
           console.log("Gagné"); // Check
-        }else if(value != this._randomNb && this._nbOfLife === 3){
+        }else if(value !== this._randomNb && this._nbOfLife === 3){
           this._randomNb = Math.floor(Math.random()* 11);
           --this._nbOfLife;
-          console.log(`Ouch, try again, 2 chance remaining ${this._nbOfLife}`); // Check
-        }else if(value != this.randomNb && this._nbOfLife === 2){
+          console.log(`Aie, recommence, reste: ${this._nbOfLife}`); // Check
+        }else if(value !== this.randomNb && this._nbOfLife === 2){
           this._randomNb = Math.floor(Math.random()* 11);
           --this._nbOfLife;
-          console.log(`Ouch, try again.. Last chance ${this._nbOfLife}`); // Check
+          console.log(`Aie, recommence.. reste:  ${this._nbOfLife}`); // Check
         }else{
           --this._nbOfLife;
           console.log(`Perdu ${this._nbOfLife}`); // Check
@@ -148,8 +146,6 @@ class Game extends Display{
       }
     }
   }
-
-  // set drawInGame(value)
 
   set reset(value){
     if(value){
@@ -204,7 +200,6 @@ document.getElementById('findNb').addEventListener('input', () => {
 let game = new Game('easy', 1);
 game.randomNb = Math.floor(Math.random()*11);
 console.log(game.randomNb); // Check
-
 
 // game process
 document.getElementById('ok').addEventListener('click', () => {
