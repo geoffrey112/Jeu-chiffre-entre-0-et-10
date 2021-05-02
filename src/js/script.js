@@ -15,6 +15,10 @@ class Display{
     this._difficulty = value;
   }
 
+  get nbOfLife(){
+    return this._nbOfLife;
+  }
+
   set nbOfLife(value){
     if(value == 2){
       document.getElementById('life2').style.visibility = "visible";
@@ -111,37 +115,28 @@ class Game extends Display{
   functionality(value){ 
     if(this._difficulty === 'easy'){
       if(this._nbOfLife > 0){
-        console.log(`Nb de vie avant: ${this._nbOfLife}`); // Check
         if(value === this._randomNb){
           this._nbOfLife = 0;
-          console.log(`Win ! Nb de vie après: ${this._nbOfLife}`); // Check
         }else if(value !== this._randomNb && this._nbOfLife === 3){
           --this._nbOfLife;
-          console.log(`Ouch, try again Nb de vie après: ${this._nbOfLife}`); // Check
         }else if(value !== this._randomNb && this._nbOfLife === 2){
           --this._nbOfLife;
-          console.log(`Ouch, try again.. Nb de vie après: ${this._nbOfLife}`); // Check
         }else{
           --this._nbOfLife;
-          console.log(`Game over Nb de vie après: ${this._nbOfLife}`); // Check
         }
       }
     }else{
       if(this._nbOfLife > 0){
         if(value === this._randomNb){
           this._nbOfLife = 0;
-          console.log("Gagné"); // Check
         }else if(value !== this._randomNb && this._nbOfLife === 3){
           this._randomNb = Math.floor(Math.random()* 11);
           --this._nbOfLife;
-          console.log(`Aie, recommence, reste: ${this._nbOfLife}`); // Check
         }else if(value !== this.randomNb && this._nbOfLife === 2){
           this._randomNb = Math.floor(Math.random()* 11);
           --this._nbOfLife;
-          console.log(`Aie, recommence.. reste:  ${this._nbOfLife}`); // Check
         }else{
           --this._nbOfLife;
-          console.log(`Perdu ${this._nbOfLife}`); // Check
         }
       }
     }
@@ -190,6 +185,7 @@ document.getElementById('difficulty').addEventListener('change', () => {
 // Nb of life
 document.getElementById('selectChance').addEventListener('change', () => {
   displayElement.nbOfLife = parseInt(document.getElementById('selectChance').value);
+  game.nbOfLife = parseInt(document.getElementById('selectChance').value);
 });
 // Ok button
 document.getElementById('findNb').addEventListener('input', () => {
@@ -199,7 +195,7 @@ document.getElementById('findNb').addEventListener('input', () => {
 
 let game = new Game('easy', 1);
 game.randomNb = Math.floor(Math.random()*11);
-console.log(game.randomNb); // Check
+console.log(game.randomNb); // Check randomNb
 
 // game process
 document.getElementById('ok').addEventListener('click', () => {
