@@ -1,9 +1,10 @@
 // Display Color - Nb of life - Ok button - Enable text, Disabled select
 class Display{
-  constructor(difficulty, nbOfLife, enableOk){
+  constructor(difficulty, nbOfLife, enableOk, txtLifeSelect){
     this._difficulty = difficulty;
     this._nbOfLife = nbOfLife;
     this._enableOk = enableOk;
+    this._txtLifeSelect = txtLifeSelect;
   }
 
   set difficulty(value){
@@ -44,54 +45,54 @@ class Display{
     this._enableOk = value;
   }
 
-
-  // set drawInGame(value){
-  //   if(this._difficulty === 'easy'){
-  //     if(this._nbOfLife > 0){
-  //       if(value === this._randomNb){
-  //         document.getElementById('answer').innerHTML = "Win!";
-  //         document.getElementById('selectChance').disabled = true;
-  //         document.getElementById('difficulty').disabled = true;
-  //       }else if(value != this._randomNb && this._nbOfLife === 3){
-  //         document.getElementById('life1').style.visibility = "hidden";
-  //         document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
-  //         document.getElementById('difficulty').disabled = true;
-  //         document.getElementById('selectChance').disabled = true;
-  //       }else if(value !== this._randomNb && this._nbOfLife === 2){
-  //         document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
-  //         document.getElementById('life2').style.visibility = "hidden";
-  //         document.getElementById('difficulty').disabled = true;
-  //         document.getElementById('selectChance').disabled = true;
-  //       }else{
-  //         document.getElementById('life3').style.visibility = "hidden";
-  //         document.getElementById('answer').innerHTML = "Game over!";
-  //         document.getElementById('difficulty').disabled = true;
-  //         document.getElementById('selectChance').disabled = true;
-  //       }
-  //     }
-  //   }else{
-  //     if(this._nbOfLife > 0){
-  //       if(value === this._randomNb){
-  //         document.getElementById('answer').innerHTML = "Win!";
-  //         document.getElementById('selectChance').disabled = true;
-  //         document.getElementById('difficulty').disabled = true;
-  //       }else if(value != this._randomNb && this._nbOfLife === 3){
-  //         document.getElementById('life1').style.visibility = "hidden";
-  //         document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
-  //         document.getElementById('difficulty').disabled = true;
-  //         document.getElementById('selectChance').disabled = true;
-  //       }else if(value != this.randomNb && this._nbOfLife === 2){
-  //         document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
-  //         document.getElementById('life2').style.visibility = "hidden";
-  //         document.getElementById('difficulty').disabled = true;
-  //         document.getElementById('selectChance').disabled = true;
-  //       }else{
-  //         document.getElementById('life3').style.visibility = "hidden";
-  //         document.getElementById('answer').innerHTML = "Game over!";
-  //       }
-  //     }
-  //   }
-  // }
+  // Solution pour randomNb
+  txtLifeSelect(value){
+    // if(this._difficulty === 'easy'){
+    //   if(this._nbOfLife > 0){
+    //     if(value === this._randomNb){
+    //       document.getElementById('answer').innerHTML = "Win!";
+    //       document.getElementById('selectChance').disabled = true;
+    //       document.getElementById('difficulty').disabled = true;
+    //     }else if(value != this._randomNb && this._nbOfLife === 3){
+    //       document.getElementById('life1').style.visibility = "hidden";
+    //       document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
+    //       document.getElementById('difficulty').disabled = true;
+    //       document.getElementById('selectChance').disabled = true;
+    //     }else if(value !== this._randomNb && this._nbOfLife === 2){
+    //       document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
+    //       document.getElementById('life2').style.visibility = "hidden";
+    //       document.getElementById('difficulty').disabled = true;
+    //       document.getElementById('selectChance').disabled = true;
+    //     }else{
+    //       document.getElementById('life3').style.visibility = "hidden";
+    //       document.getElementById('answer').innerHTML = "Game over!";
+    //       document.getElementById('difficulty').disabled = true;
+    //       document.getElementById('selectChance').disabled = true;
+    //     }
+    //   }
+    // }else{
+    //   if(this._nbOfLife > 0){
+    //     if(value === this._randomNb){
+    //       document.getElementById('answer').innerHTML = "Win!";
+    //       document.getElementById('selectChance').disabled = true;
+    //       document.getElementById('difficulty').disabled = true;
+    //     }else if(value != this._randomNb && this._nbOfLife === 3){
+    //       document.getElementById('life1').style.visibility = "hidden";
+    //       document.getElementById('answer').innerHTML = "Ouch, try again, 2 chance remaining";
+    //       document.getElementById('difficulty').disabled = true;
+    //       document.getElementById('selectChance').disabled = true;
+    //     }else if(value != this.randomNb && this._nbOfLife === 2){
+    //       document.getElementById('answer').innerHTML = "Ouch, try again.. Last chance";
+    //       document.getElementById('life2').style.visibility = "hidden";
+    //       document.getElementById('difficulty').disabled = true;
+    //       document.getElementById('selectChance').disabled = true;
+    //     }else{
+    //       document.getElementById('life3').style.visibility = "hidden";
+    //       document.getElementById('answer').innerHTML = "Game over!";
+    //     }
+    //   }
+    // }
+  }
 
 }
 
@@ -200,6 +201,7 @@ console.log(game.randomNb); // Check randomNb
 // game process
 document.getElementById('ok').addEventListener('click', () => {
   game.functionality(parseInt(document.getElementById('findNb').value));
+  displayElement.txtLifeSelect(parseInt(document.getElementById('findNb').value));
 });
 // Reset
 document.getElementById('reset').addEventListener('click', () => {
