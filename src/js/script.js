@@ -1,10 +1,9 @@
 // Display Color - Nb of life - Ok button - Enable text, Disabled select
 class Display{
-  constructor(difficulty, nbOfLife, enableOk, txtLifeSelect){
+  constructor(difficulty, nbOfLife, enableOk){
     this._difficulty = difficulty;
     this._nbOfLife = nbOfLife;
     this._enableOk = enableOk;
-    this._txtLifeSelect = txtLifeSelect;
   }
 
   set difficulty(value){
@@ -45,8 +44,11 @@ class Display{
     this._enableOk = value;
   }
 
-  // Solution pour randomNb
-  txtLifeSelect(value){
+  // Affichage Résultat + desac les select + desac vie 
+  txtLifeSelect(){
+    
+    
+    
     // if(this._difficulty === 'easy'){
     //   if(this._nbOfLife > 0){
     //     if(value === this._randomNb){
@@ -70,7 +72,7 @@ class Display{
     //       document.getElementById('selectChance').disabled = true;
     //     }
     //   }
-    // }else{
+    //}else{
     //   if(this._nbOfLife > 0){
     //     if(value === this._randomNb){
     //       document.getElementById('answer').innerHTML = "Win!";
@@ -99,7 +101,7 @@ class Display{
 
 // Game process
 class Game extends Display{
-  constructor(difficulty, nbOfLife, randomNb, reset){
+  constructor(difficulty, nbOfLife ,randomNb, reset){
     super(difficulty, nbOfLife);
     this._randomNb = randomNb;
     this._reset = reset;
@@ -201,7 +203,7 @@ console.log(game.randomNb); // Check randomNb
 // game process
 document.getElementById('ok').addEventListener('click', () => {
   game.functionality(parseInt(document.getElementById('findNb').value));
-  displayElement.txtLifeSelect(parseInt(document.getElementById('findNb').value));
+  // displayElement.txtLifeSelect(parseInt(document.getElementById('findNb').value));
 });
 // Reset
 document.getElementById('reset').addEventListener('click', () => {
@@ -214,6 +216,4 @@ let enableEnter = new Enable();
 document.getElementById('findNb').addEventListener('keydown', (e) => {
   enableEnter.enterButton = e.key;
 });
-
-
 
