@@ -1,18 +1,23 @@
 // Ne pas mettre de logique dans Display, Game gère de pointer vers Diplay (voir sample.js)
-// Ne pas set get si on ne change pas de valeur directement
-// Bien nommer nos variables/paramètres + créer des variable pour plusieurs document.getElem 
+// Ne pas set-get si on ne change pas de valeur directement
+// Bien nommer nos variables/paramètres + créer des variable pour plusieurs document.getElement 
 
 class Display{
 
-  // displayBackground
+  // displayColor
   // displayLife
   // okStatus
   // displayReset
   // disabledSelect
 
+  displayColor(lvl){
+    selectDifficulty = document.getElementById('difficulty');
 
-  method1(){
-    return "Une chaine";
+    if(lvl === 'hard'){
+      selectDifficulty.style.backgroundColor = "red";
+    }else{
+      selectDifficulty.style.backgroundColor = "#04f804";
+    }
   }
   
 }
@@ -26,13 +31,16 @@ class Game extends Display{
   // functionality
   // enableEnterButton
   // enableOk
+  // reset
 
-  recupMethod1(){
-    return this.method1();
-  }
-
+  
 }
 
-let enfant = new Enfant();
-console.log(enfant.recupMethod1());
+
+
+let displayElem = new Display('easy');
+let process = new Game();
+
+
+
 
