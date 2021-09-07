@@ -1,3 +1,5 @@
+//NOT FINISHED
+
 // Display Color - Nb of life - Ok button - Enable text, Disabled select
 class Display{
 
