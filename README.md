@@ -16,6 +16,6 @@ And have the result of my guess
 - Create a Pull request from your branch to master (Github)
 
 # Bonus:
-
-- Shiny design (/src)
+- Without Design (.old)
+- With Shiny design (/src)
 - Internationalization
