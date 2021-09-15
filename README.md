@@ -17,5 +17,5 @@ And have the result of my guess
 
 # Bonus:
 
-- Shiny design
+- Shiny design (/src)
 - Internationalization
