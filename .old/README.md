@@ -3,7 +3,7 @@
 Le premier script est déjà dé-commenté, lancez simplement le serveur local pour commencer le jeu 
 Si vous desirez voir l'execution du prochain script dé-commentez celui ci et pensez surtout à commenter le précédent !
 
-- Jeux avec different niveau de dificulte
+- Jeux avec différent niveau de difficulté
 - Niveau 1: chiffre statique
 - Niveau 2: chiffre random + 3 chances
 - Niveau 3: chiffre random every round + 2 chances
