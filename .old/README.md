@@ -6,7 +6,7 @@ Si vous desirez voir l'execution du prochain script dé-commentez celui ci et pe
 - jeux avec different niveau de dificulte
 - Niveau 1: chiffre statique
 - niveau 2: chiffre random + 3 chances
-- niveau 3: chiffre radom every round + 2 chances
+- niveau 3: chiffre random every round + 2 chances
 
 **remarques**
 - Number detection missing
