@@ -1,0 +1,209 @@
+body{
+  background-image: url("https://wallpapercave.com/wp/wp2450670.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-position-x:-50px;
+  background-color:#262c3a;
+}
+
+.element-top{
+  margin:50px 0px;
+}
+
+.square{
+  height:400px;
+  margin:50px 100px;
+  background-image: url("/Rick et morty.jpg");
+  background-repeat: no-repeat;
+  background-size:130%;
+  background-position-y:-30px;
+  background-position-x:-30px;
+  border:2px solid #9fcc3b;
+  box-shadow: 2px 2px 20px 4px #74de58;
+}
+
+.arrow{
+  height:100px;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-name: effect; 
+  transform: rotate(90deg) scale(1, 1);
+  margin-left:-100px;
+}
+
+h1{
+  color:#1316e0;
+  font-size:28px;
+  text-align:center;
+  font-weight: bold;
+  text-shadow:#74de58 0px 0px 8px;
+}
+
+.content-label{
+  color:#145bf5;
+  font-size:20px;
+  text-align:center;
+  font-weight: bold;
+  height:93%;
+}
+
+.btn{
+  color:#f0db66;
+}
+
+select, button{
+  outline:none;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.selectDifficult{
+  transform: translate(42px);
+  background-color: #04f804;
+}
+
+.selectDifficult>option:nth-child(1){
+  background-color:#04f804;
+}
+
+.selectDifficult>option:nth-child(2){
+  background-color:#ff0000;
+}
+
+.number{
+  width:70px;
+  border-radius: 5px;
+  padding-left:10px;
+}
+
+.number:focus{
+  outline:none;
+  transition-duration: 0.2s;
+  box-shadow: 0px 0px 10px 3px #6d00fc;
+}
+
+.life-content{
+  width:260px;
+  height:90px;
+  margin: 50px 37%;
+}
+
+#answer{
+  height:20px;
+  color:black;
+  text-shadow: 0px 0px 8px #6d00fc;
+}
+
+
+/* Effect square */
+.square:hover{
+  box-shadow: 0px 0px 0px 0px #74de58;
+  transition-duration: 2s;
+}
+/*****/
+
+.life1, .life2{
+  visibility: hidden;
+}
+
+
+/* Effect arrow */
+@keyframes effect{
+
+  from{
+    transform: translate(0px, 0px) rotate(90deg) scale(1, 1);
+  }
+  50%{
+    transform: translate(0px, -25px) rotate(90deg) scale(1, 0);
+  }
+
+  50%{
+    transform: translate(0px, 20px) rotate(90deg) scale(1, -1);
+  }
+  to{
+    transform: translate(0px, 0px) rotate(90deg);
+  }
+
+}
+
+/* Responsive XS max */
+@media (max-width: 575.98px){
+  .square{
+    background-size:720px;
+    background-position-x:-130px;
+  }
+}
+
+/* Responsive SM between min and max */
+@media (min-width: 576px) and (max-width: 767.98px){
+  .square{
+    background-size:158%;
+    background-position-y:-23px;
+    background-position-x:-120px;
+  }
+}
+
+/* Responsive SM max*/
+@media (max-width: 767.98px){
+  .titleXl{
+    display:none;
+  }
+
+  .square{
+    margin:0 50px;
+  }
+
+  .arrow{
+    width:80px;
+    height:80px;
+  }
+
+  h1{
+    font-size:23px;
+    margin-bottom:30px;
+  }
+
+  .life-content{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+}
+
+/* Responsive MD min */
+  @media (min-width: 768px){
+    .titleMd{
+      display: none;
+    }
+
+    .life-content{
+      margin-left:52%;
+    }
+  }
+
+/* Responsive MD between min and max */
+@media (min-width: 768px) and (max-width: 991.98px){
+  .square{
+    background-position-y:-23px;
+    background-position-x:-40px;
+    background-size:133%; 
+  }
+}
+
+/* Responsive MD max */
+  @media (max-width: 991.98px) {
+    body{
+      background-size: 100%;
+      background-position-x: 100px;
+      background-position-y: -50px;
+      background-repeat: no-repeat;
+    }
+  }
+
+
+
+
+
