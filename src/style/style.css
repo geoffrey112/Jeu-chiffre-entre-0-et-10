@@ -32,7 +32,7 @@ body{
 }
 
 h1{
-  color:#1316e0;
+  color:#0b2ce6;
   font-size:28px;
   text-align:center;
   font-weight: bold;
@@ -74,7 +74,7 @@ select, button{
 }
 
 .number{
-  width:70px;
+  width:72px;
   border-radius: 5px;
   padding-left:10px;
 }
@@ -88,13 +88,24 @@ select, button{
 .life-content{
   width:260px;
   height:90px;
-  margin: 50px 37%;
+  margin:20px 37%;
 }
 
 #answer{
-  height:20px;
   color:black;
   text-shadow: 0px 0px 8px #6d00fc;
+  margin-left:40px;
+  height:50px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#descHard{
+  margin-top: 20px;
+  color:red;
+  position:absolute;
+  left:16%;
 }
 
 
@@ -171,18 +182,22 @@ select, button{
     margin-right:auto;
   }
 
+  #descHard{
+    left:6%;
+  }
+
 }
 
 /* Responsive MD min */
-  @media (min-width: 768px){
-    .titleMd{
-      display: none;
-    }
-
-    .life-content{
-      margin-left:52%;
-    }
+@media (min-width: 768px){
+  .titleMd{
+    display: none;
   }
+
+  .life-content{
+    margin-left:52%;
+  }
+}
 
 /* Responsive MD between min and max */
 @media (min-width: 768px) and (max-width: 991.98px){
@@ -191,17 +206,21 @@ select, button{
     background-position-x:-40px;
     background-size:133%; 
   }
+
+  #descHard{
+    left:12%;
+  }
 }
 
 /* Responsive MD max */
-  @media (max-width: 991.98px) {
-    body{
-      background-size: 100%;
-      background-position-x: 100px;
-      background-position-y: -50px;
-      background-repeat: no-repeat;
-    }
+@media (max-width: 991.98px) {
+  body{
+    background-size: 100%;
+    background-position-x: 100px;
+    background-position-y: -50px;
+    background-repeat: no-repeat;
   }
+}
 
 
 
