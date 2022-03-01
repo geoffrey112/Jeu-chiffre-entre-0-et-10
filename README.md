@@ -18,4 +18,3 @@ And have the result of my guess
 # Bonus:
 - Without Design (.old)
 - With Shiny design (/src)
-- Internationalization
