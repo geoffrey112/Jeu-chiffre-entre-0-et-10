@@ -161,7 +161,7 @@ class Game extends Display{
             this.looseLife();
             this.message();
             this.randomNum = Math.floor(Math.random()*11);
-            // console.log(`Après reset: ${this.randomNum}`); 
+            // console.log(`Après reset: ${this.randomNum}`);
           }
         }
       }
